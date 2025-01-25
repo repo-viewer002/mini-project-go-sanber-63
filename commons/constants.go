@@ -16,10 +16,12 @@ var (
 )
 
 func init() {
-	err := godotenv.Load(".env")
-	
-	if err != nil {
-		panic("Error loading .env file, " + err.Error())
+	if os.Getenv("RAILWAY_ENVIRONMENT_NAME") == "" {
+		err := godotenv.Load(".env")
+		
+		if err != nil {
+			panic("Error loading .env file, " + err.Error())
+		}
 	}
 
 	DB_HOST = os.Getenv("DB_HOST")

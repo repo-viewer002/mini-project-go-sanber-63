@@ -13,12 +13,14 @@ var (
 	DB_PASSWORD string
 	DB_NAME     string
 	DB_SSL_MODE string
+	ENDPOINT    string
+	REPOSITORY  string
 )
 
 func init() {
 	if os.Getenv("RAILWAY_ENVIRONMENT_NAME") == "" {
 		err := godotenv.Load(".env")
-		
+
 		if err != nil {
 			panic("Error loading .env file, " + err.Error())
 		}
@@ -30,4 +32,6 @@ func init() {
 	DB_PASSWORD = os.Getenv("DB_PASSWORD")
 	DB_NAME = os.Getenv("DB_NAME")
 	DB_SSL_MODE = os.Getenv("DB_SSL_MODE")
+	ENDPOINT = os.Getenv("ENDPOINT")
+	REPOSITORY = os.Getenv("REPOSITORY")
 }
